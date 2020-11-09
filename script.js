@@ -13,7 +13,6 @@ let threePm = $("#15pm");
 let fourPm = $("#16pm");
 let fivePm = $("#17pm");
 
-
 let hour = moment().hours();
 let userInput;
 let hourSpan;
@@ -81,4 +80,16 @@ $(document).ready(function () {
 
   //Button Functions
 
-  
+  $(".saveBtn").on("click", function () {
+    userInput = $(this).siblings(".form-control").val().trim();
+    console.log(userInput);
+    hourSpan = $(this).siblings(".input-group-prepend").text().trim();
+    console.log(hourSpan);
+    localStorage.setItem(hourSpan, JSON.stringify(userInput));
+  });
+
+  $("#clearDay").on("click", function () {
+    localStorage.clear();
+    initPage();
+  });
+});
